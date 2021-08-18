@@ -54,7 +54,8 @@ def _word_tokenize(text):
 class G2p:
     def __init__(
         self,
-        phoneme_dict_path=None,
+        # phoneme_dict_path=None,
+        phoneme_dict_path='./merged.dict.txt',
         use_seq2seq_for_oov=False,
         ignore_ambiguous_words=True,
         text_preprocessing_func=_text_preprocessing,
@@ -82,7 +83,6 @@ class G2p:
     def _construct_grapheme2phoneme_dict(phoneme_dict_path=None, encoding='latin-1'):
         if phoneme_dict_path is None:
             from nltk.corpus import cmudict
-
             return cmudict.dict()
 
         _alt_re = re.compile(r'\([0-9]+\)')
