@@ -80,7 +80,7 @@ class G2p:
         self.word_tokenize_func = word_tokenize_func
 
     @staticmethod
-    def _construct_grapheme2phoneme_dict(phoneme_dict_path=None, encoding='latin-1'):
+    def _construct_grapheme2phoneme_dict(phoneme_dict_path='/content/merged.dict.txt', encoding='latin-1'):
         if phoneme_dict_path is None:
             from nltk.corpus import cmudict
             return cmudict.dict()
