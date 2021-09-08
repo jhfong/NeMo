@@ -80,7 +80,8 @@ class G2p:
         self.word_tokenize_func = word_tokenize_func
 
     @staticmethod
-    def _construct_grapheme2phoneme_dict(phoneme_dict_path='/content/merged.dict.txt', encoding='latin-1'):
+    def _construct_grapheme2phoneme_dict(phoneme_dict_path, encoding='latin-1'):
+        # def _construct_grapheme2phoneme_dict(phoneme_dict_path=None, encoding='latin-1')
         if phoneme_dict_path is None:
             from nltk.corpus import cmudict
             return cmudict.dict()
@@ -282,7 +283,7 @@ class Phonemes(Base):
         sep='|',  # To be able to distinguish between 2/3 letters codes.
         add_blank_at="last_but_one",
         pad_with_space=False,
-        improved_version_g2p=False,
+        improved_version_g2p=True,
         phoneme_dict_path='/content/merged.dict.txt',
     ):
         labels = []
