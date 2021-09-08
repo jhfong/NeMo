@@ -327,7 +327,7 @@ class AudioToCharWithDursF0Dataset(AudioToCharDataset):
         add_blank_at="last_but_one",
         pad_with_space=False,
         improved_version_g2p=False,
-        phoneme_dict_path=None,
+        phoneme_dict_path='/content/merged.dict.txt',
     ):
         """Constructs vocabulary from given parameters.
 
