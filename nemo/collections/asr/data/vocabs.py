@@ -66,10 +66,10 @@ class G2p:
             nltk.data.find('taggers/averaged_perceptron_tagger.zip')
         except LookupError:
             nltk.download('averaged_perceptron_tagger', quiet=True)
-        try:
-            nltk.data.find('corpora/cmudict.zip')
-        except LookupError:
-            nltk.download('cmudict', quiet=True)
+        # try:
+        #     nltk.data.find('corpora/cmudict.zip')
+        # except LookupError:
+        #     nltk.download('cmudict', quiet=True)
 
         self.homograph2features = _g2p.homograph2features
         self.g2p_dict = self._construct_grapheme2phoneme_dict(phoneme_dict_path)
@@ -80,11 +80,11 @@ class G2p:
         self.word_tokenize_func = word_tokenize_func
 
     @staticmethod
-    def _construct_grapheme2phoneme_dict(phoneme_dict_path, encoding='latin-1'):
+    def _construct_grapheme2phoneme_dict(phoneme_dict_path='/content/merged.dict.txt', encoding='latin-1'):
         # def _construct_grapheme2phoneme_dict(phoneme_dict_path=None, encoding='latin-1')
-        if phoneme_dict_path is None:
-            from nltk.corpus import cmudict
-            return cmudict.dict()
+        # if phoneme_dict_path is None:
+        #     from nltk.corpus import cmudict
+        #     return cmudict.dict()
 
         _alt_re = re.compile(r'\([0-9]+\)')
         g2p_dict = {}
