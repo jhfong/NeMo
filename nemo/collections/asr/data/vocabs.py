@@ -55,7 +55,7 @@ class G2p:
     def __init__(
         self,
         # phoneme_dict_path=None,
-        phoneme_dict_path='./merged.dict.txt',
+        phoneme_dict_path='/contents/merged.dict.txt',
         use_seq2seq_for_oov=False,
         ignore_ambiguous_words=True,
         text_preprocessing_func=_text_preprocessing,
