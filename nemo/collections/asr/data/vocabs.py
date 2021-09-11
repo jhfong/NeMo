@@ -54,8 +54,7 @@ def _word_tokenize(text):
 class G2p:
     def __init__(
         self,
-        # phoneme_dict_path=None,
-        phoneme_dict_path='/content/merged.dict.txt',
+        phoneme_dict_path=None,
         use_seq2seq_for_oov=False,
         ignore_ambiguous_words=True,
         text_preprocessing_func=_text_preprocessing,
@@ -66,10 +65,10 @@ class G2p:
             nltk.data.find('taggers/averaged_perceptron_tagger.zip')
         except LookupError:
             nltk.download('averaged_perceptron_tagger', quiet=True)
-        # try:
-        #     nltk.data.find('corpora/cmudict.zip')
-        # except LookupError:
-        #     nltk.download('cmudict', quiet=True)
+        try:
+            nltk.data.find('corpora/cmudict.zip')
+        except LookupError:
+            nltk.download('cmudict', quiet=True)
 
         self.homograph2features = _g2p.homograph2features
         self.g2p_dict = self._construct_grapheme2phoneme_dict(phoneme_dict_path)
@@ -80,11 +79,11 @@ class G2p:
         self.word_tokenize_func = word_tokenize_func
 
     @staticmethod
-    def _construct_grapheme2phoneme_dict(phoneme_dict_path='/content/merged.dict.txt', encoding='latin-1'):
-        # def _construct_grapheme2phoneme_dict(phoneme_dict_path=None, encoding='latin-1')
-        # if phoneme_dict_path is None:
-        #     from nltk.corpus import cmudict
-        #     return cmudict.dict()
+    def _construct_grapheme2phoneme_dict(phoneme_dict_path=None, encoding='latin-1'):
+        if phoneme_dict_path is None:
+            from nltk.corpus import cmudict
+
+            return cmudict.dict()
 
         _alt_re = re.compile(r'\([0-9]+\)')
         g2p_dict = {}
@@ -283,8 +282,8 @@ class Phonemes(Base):
         sep='|',  # To be able to distinguish between 2/3 letters codes.
         add_blank_at="last_but_one",
         pad_with_space=False,
-        improved_version_g2p=True,
-        phoneme_dict_path='/content/merged.dict.txt',
+        improved_version_g2p=False,
+        phoneme_dict_path=None,
     ):
         labels = []
         self.space, labels = len(labels), labels + [space]  # Space
